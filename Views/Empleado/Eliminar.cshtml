@@ -1,0 +1,69 @@
+﻿@model Empleado
+@{
+    ViewData["Tittle"] = "Eliminar";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+<a class="btn btn-outline-dark" type="button" asp-controller="Empleado" asp-action="Index">Volver</a>
+<br />
+<br />
+
+<form enctype="multipart/form-data" class="container-fluid" method="post">
+    <div class="card mb-6">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="@Model.rutaFoto" class="card-img-top" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Empleado</h5>
+                    <table class="table">
+                        <input hidden asp-for="Id" />
+                        <tr>
+                            <td>
+                                <label class="form-label">Nombre:</label>
+                            </td>
+                            <td>
+                                <input disabled type="text" class="form-control" asp-for="nombre" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label class="form-label">Cedula:</label>
+                            </td>
+                            <td>
+                                <input disabled type="text" class="form-control" asp-for="cedula" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-label">Fecha de ingreso:</label>
+                            </td>
+                            <td>
+                                <input disabled type="date" class="form-control" asp-for="fechaIngreso" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-label">Cargo:</label>
+                            </td>
+                            <td>
+                               
+                                <input disabled type="text" class="form-control" asp-for="cargo" />
+                                
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<label class="alert-danger"> @ViewBag.error</label>

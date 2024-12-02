@@ -1,0 +1,31 @@
+﻿@model Empleado
+@{
+    ViewData["Title"] = "ListadoEmpleados";
+   
+}
+<a asp-action="Crear" asp-controller="Empleado" class="btn btn-outline-primary"> Crear Empleado</a>
+<br />
+<br />
+<br />
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in ViewBag.listado)
+    {
+        <div class="col">
+            <div class="card">
+                
+                <img src="@item.rutaFoto" class="card-img-top" alt="...">
+                
+                <div class="card-body">
+                    <h5 class="card-title">@item.nombre - Cargo: @item.cargo  </h5>
+                    
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-outline-warning" asp-action="Editar" asp-controller="Empleado" type="button" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-outline-danger" asp-action="Eliminar" asp-controller="Empleado" type="button" asp-route-id="@item.Id">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

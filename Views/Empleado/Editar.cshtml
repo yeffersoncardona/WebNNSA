@@ -1,0 +1,89 @@
+﻿@model Empleado
+@{
+    ViewData["Tittle"] = "Editar";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+
+<a class="btn btn-outline-dark" type="button" asp-controller="Empleado" asp-action="Index">Volver</a>
+<br />
+<br />
+
+<form enctype="multipart/form-data" class="container-fluid" method="post">
+    <div class="card mb-6">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="@Model.rutaFoto" class="rounded" width="400" alt="...">
+
+
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Empleado</h5>
+                    <table class="table">
+                        <input hidden asp-for="Id" />
+                        <tr>
+                            <td>
+                                <label class="form-label">Nombre:</label>
+                            </td>
+                            <td>
+                                <input required type="text" class="form-control" asp-for="nombre" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-label">Imagen:</label>
+                            </td>
+                            @if (Model.rutaFoto != null)
+                            {
+                                <td>
+                                    <input type="file" class="form-control" asp-for="rutaFoto" />
+                                </td>
+                            }
+                            else
+
+                            {
+                                <td>
+                                    <input type="file" class="form-control" asp-for="File" />
+                                </td>
+                            }
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-label">Cedula:</label>
+                            </td>
+                            <td>
+                                <input required type="text" class="form-control" asp-for="cedula" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-label">Fecha de ingreso:</label>
+                            </td>
+                            <td>
+                                <input required type="date" class="form-control" asp-for="fechaIngreso" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="form-label">Fecha de ingreso:</label>
+                            </td>
+                            <td>
+                                <select id="selectCargos" asp-for="cargoId" class="form-control" asp-items=items></select>
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-outline-warning">Actualizar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<label class="alert-danger"> @ViewBag.error</label>
